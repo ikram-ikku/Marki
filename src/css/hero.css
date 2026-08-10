@@ -1,0 +1,23 @@
+/* =========================================
+   HERO
+========================================= */
+
+.hero {
+    position: relative;
+
+    width: 100%;
+
+    height: 620px;
+
+    background-image: url("../public/images/shoes/IMG2_20240528_141920_Bokeh.jpg.jpeg");
+
+    background-size: cover;
+
+    background-position: center;
+
+    display: flex;
+
+    align-items: center;
+
+    overflow: hidden;
+}
