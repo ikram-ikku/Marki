@@ -36,10 +36,10 @@ export default function Services() {
         <div className="services-grid">
             <article className="service-card">
                 <div className="service-image img-fallback">
-                    <img src="/public/images/shoes/image 1.png" alt="Premium leather materials" loading="lazy"
+                    <img src="/images/shoes/image 1.png" alt="Premium leather materials" loading="lazy"
                         onError={(e) => {
                             e.target.onerror = null;
-                            e.target.src = 'public/images/shoes/placeholder.jpg';
+                            e.target.src = '/images/shoes/placeholder.jpg';
                             e.target.parentElement.classList.add('img-fallback');
                         }} />
                 </div>
@@ -49,10 +49,10 @@ export default function Services() {
 
             <article className="service-card">
                 <div className="service-image img-fallback">
-                    <img src="/public/images/shoes/image 2.png" alt="Handcrafted shoe polishing" loading="lazy"
+                    <img src="/images/shoes/image 2.png" alt="Handcrafted shoe polishing" loading="lazy"
                         onError={(e) => {
                             e.target.onerror = null;
-                            e.target.src = 'public/images/shoes/placeholder.jpg';
+                            e.target.src = '/images/shoes/placeholder.jpg';
                             e.target.parentElement.classList.add('img-fallback');
                         }} />
                 </div>
@@ -62,10 +62,10 @@ export default function Services() {
 
             <article className="service-card">
                 <div className="service-image img-fallback">
-                    <img src="/public/images/shoes/image 3.png" alt="Perfect footwear fitting" loading="lazy"
+                    <img src="/images/shoes/image 3.png" alt="Perfect footwear fitting" loading="lazy"
                         onError={(e) => {
                             e.target.onerror = null;
-                            e.target.src = 'public/images/shoes/placeholder.jpg';
+                            e.target.src = '/images/shoes/placeholder.jpg';
                             e.target.parentElement.classList.add('img-fallback');
                         }} />
                 </div>

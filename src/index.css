@@ -170,19 +170,23 @@
    ========================================================= */
 
         .navbar {
-            position: absolute;
-            top: 26px;
+            position: fixed;
+            top: 0;
             left: 0;
             right: 0;
-            z-index: 20;
-            background: transparent;
+            z-index: 100;
+            height: 76px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(28, 28, 28, 0.08);
         }
 
         .nav-inner {
-            max-width: 100%;
+            max-width: 1280px;
             margin: 0 auto;
-            padding: 0 5%;
-            height: 52px;
+            padding: 0 32px;
+            height: 76px;
             display: grid;
             grid-template-columns: auto 1fr auto;
             align-items: center;
@@ -491,7 +495,7 @@
         }
 
         /* Elegant line-art fallback shown if no photo is present at
-   public/images/shoes/hero-shoes.jpg — replace with a real
+   /images/shoes/hero-shoes.jpg — replace with a real
    product photograph for production. */
         .hero-shoe.shoe-fallback {
             opacity: 1;
