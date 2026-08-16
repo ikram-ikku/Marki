@@ -19,7 +19,7 @@ export const PRODUCTS = [
     availableColors: ['Tan', 'Black', 'Mahogany'],
     availableSizes: [6, 7, 8, 9, 10, 11],
     image: '/images/shoes/1f67bd09-1813-4b82-9bd6-3f6cab15a805.png',
-    secondaryImage: '/images/shoes/image 1.png',
+    secondaryImage: '/images/shoes/1f67bd09-1813-4b82-9bd6-3f6cab15a805.png',
     description: 'Handcrafted from vegetable-tanned full-grain calfskin. The Classic Penny Loafer features traditional apron stitching, a cushioned memory-leather insole, and a hand-stacked leather heel.',
     details: [
       '100% Full-grain European calfskin',
