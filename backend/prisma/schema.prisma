@@ -1,0 +1,104 @@
+// Prisma schema for Marki Marketplace
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  CUSTOMER
+  SELLER
+  ADMIN
+}
+
+enum SellerVerificationStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  SUSPENDED
+}
+
+enum ProductStatus {
+  DRAFT
+  PUBLISHED
+  UNPUBLISHED
+  OUT_OF_STOCK
+  ARCHIVED
+}
+
+model User {
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  password  String
+  role      Role     @default(CUSTOMER)
+  seller    Seller?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Seller {
+  id                 String                   @id @default(uuid())
+  userId             String                   @unique
+  storeName          String
+  storeDescription   String?
+  storeLogo          String?
+  contactEmail       String?
+  contactPhone       String?
+  addressLine1       String?
+  addressLine2       String?
+  city               String?
+  state              String?
+  postalCode         String?
+  country            String?
+  verificationStatus SellerVerificationStatus @default(PENDING)
+  user               User                     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  products           Product[]
+  createdAt          DateTime                 @default(now())
+  updatedAt          DateTime                 @updatedAt
+}
+
+model Product {
+  id          String        @id @default(uuid())
+  sellerId    String
+  name        String
+  brand       String
+  category    String
+  subCategory String?
+  description String
+  price       Decimal       @db.Decimal(10, 2)
+  mrp         Decimal       @db.Decimal(10, 2)
+  discount    Decimal       @default(0) @db.Decimal(5, 2)
+  sku         String        @unique
+  gender      String
+  color       String
+  material    String
+  status      ProductStatus @default(DRAFT)
+  seller      Seller        @relation(fields: [sellerId], references: [id], onDelete: Cascade)
+  variants    ProductVariant[]
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  @@index([sellerId])
+  @@index([category])
+  @@index([status])
+}
+
+model ProductVariant {
+  id        String   @id @default(uuid())
+  productId String
+  size      String
+  sku       String   @unique
+  stock     Int      @default(0)
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([productId, size])
+  @@index([productId])
+}
