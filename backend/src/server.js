@@ -5,6 +5,7 @@ import healthRoutes from './routes/health.routes.js';
 import authRoutes from './routes/auth.routes.js';
 import productRoutes from './routes/product.routes.js';
 import testRoutes from './routes/test.routes.js';
+import cartRoutes from './routes/cart.routes.js';
 import { errorHandler } from './middleware/index.js';
 
 dotenv.config();
@@ -22,6 +23,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api', healthRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/products', productRoutes);
+app.use('/api/cart', cartRoutes);
 app.use('/api/test', testRoutes);
 
 // Error Handling Middleware

@@ -1,4 +1,8 @@
+import { Routes, Route } from 'react-router-dom';
 import { ShopProvider, useShop } from './context/ShopContext';
+import ProtectedRoute from './components/ProtectedRoute';
+import Login from './pages/Login';
+import SellerPortal from './seller/SellerPortal';
 import UtilityBar from './components/UtilityBar';
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -53,8 +57,18 @@ function MainContent() {
 
 export default function App() {
   return (
-    <ShopProvider>
-      <MainContent />
-    </ShopProvider>
+    <Routes>
+      <Route path="/login" element={<Login />} />
+      <Route path="/seller/*" element={
+        <ProtectedRoute allowedRoles={['SELLER', 'ADMIN']}>
+          <SellerPortal />
+        </ProtectedRoute>
+      } />
+      <Route path="/*" element={
+        <ShopProvider>
+          <MainContent />
+        </ShopProvider>
+      } />
+    </Routes>
   );
 }
