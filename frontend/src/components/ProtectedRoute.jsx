@@ -1,10 +1,10 @@
-import { Navigate, Outlet } from 'react-router-dom';
+//import { Navigate, Outlet } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import UtilityBar from './UtilityBar';
-import Header from './Header';
-import Footer from './Footer';
+ 
 
-export default function ProtectedRoute({ allowedRoles = [] }) {
+//export default function ProtectedRoute({ allowedRoles = [] }) {
+export default function ProtectedRoute({ allowedRoles = [], children }) {
   const { user, isLoading } = useAuth();
 
   if (isLoading) {
@@ -24,6 +24,6 @@ export default function ProtectedRoute({ allowedRoles = [] }) {
     if (user.role === 'SELLER') return <Navigate to="/seller/dashboard" replace />;
     return <Navigate to="/" replace />;
   }
-
-  return <Outlet />;
+  return children;
+  // return <Outlet />;
 }
